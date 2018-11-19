@@ -39,9 +39,22 @@ https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html
 3.学习成本高
 ```
 
-
-
 ![image](https://user-images.githubusercontent.com/19573429/48485940-1d863900-e855-11e8-8828-4927274026a1.png)
+
+![image](https://user-images.githubusercontent.com/19573429/48486079-70f88700-e855-11e8-8e3b-620187704cab.png)
+
+
+### 微信小程序框架 mpvue(vue风格) wepy(类vue风格) taro(react风格)
+http://www.wxapp-union.com/article-4593-1.html
+
+## 生命周期
+*vue生命周期+兼容小程序生命周期
+
+## 腾讯云开发环境部署
+https://console.qcloud.com/lav2/dev
+
+
+
 
 
 
