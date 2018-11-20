@@ -65,9 +65,9 @@ export default class MyPage extends wepy.page {
 
     mixins = [];  // 声明页面所引用的Mixin实例
 
-    computed = {};  // 声明计算属性（详见后文介绍）
+    computed = {};  // 声明计算属性
 
-    watch = {};  // 声明数据watcher（详见后文介绍）
+    watch = {};  // 声明数据watcher
 
     methods = {};  // 声明页面wxml中标签的事件处理函数。注意，此处只用于声明页面wxml中标签的bind、catch事件，自定义方法需以自定义方法的方式声明
 
@@ -110,11 +110,8 @@ taro与react生命周期完全相同
 ## 腾讯云开发环境部署
 https://console.qcloud.com/lav2/dev
 
+## 小程序hello world目录
 
-
-
-
-
-
+![image](https://user-images.githubusercontent.com/19573429/48777312-3ab37f80-ed0d-11e8-93cd-97a6b4eaf7db.png)
 
 
