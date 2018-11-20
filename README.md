@@ -32,7 +32,7 @@
 *支持样式编译器: Scss/Less，模板编译器，代码编译器：Babel/Typescript。（在 0.10.101000 以及之后版本的开发工具中，会默认使用 babel 将开发者 ES6 语法代码转换为三端都能很好支持的 ES5 的代码，帮助开发者解决环境不同所带来的开发问题。）
 
 
-## 第三方框架对比 wepy mpvue taro
+## 第三方框架对比 wepy(star15,154) mpvue(star14,354) taro(star11,288)
 ![image](https://user-images.githubusercontent.com/19573429/48775390-df32c300-ed07-11e8-9343-ea053545ce09.png)
 
 
@@ -105,7 +105,76 @@ onUnload()
 
 taro与react生命周期完全相同
 
+## request请求
+*wepy对wx.request做了接受参数的修改,值得一提的是它提供了针对全局的intercapter拦截器
 
+```javascript
+// 原生代码:
+
+wx.request({
+    url: 'xxx',
+    success: function (data) {
+        console.log(data);
+    }
+});
+
+// WePY 使用方式, 需要开启 Promise 支持，参考开发规范章节
+wepy.request('xxxx').then((d) => console.log(d));
+
+// async/await 的使用方式, 需要开启 Promise 和 async/await 支持，参考 WIKI
+async function request () {
+   let d = await wepy.request('xxxxx');
+   console.log(d);
+}
+```
+
+拦截器
+```javascript
+import wepy from 'wepy';
+
+export default class extends wepy.app {
+    constructor () {
+        // this is not allowed before super()
+        super();
+        // 拦截request请求
+        this.intercept('request', {
+            // 发出请求时的回调函数
+            config (p) {
+                // 对所有request请求中的OBJECT参数对象统一附加时间戳属性
+                p.timestamp = +new Date();
+                console.log('config request: ', p);
+                // 必须返回OBJECT参数对象，否则无法发送请求到服务端
+                return p;
+            },
+
+            // 请求成功后的回调函数
+            success (p) {
+                // 可以在这里对收到的响应数据对象进行加工处理
+                console.log('request success: ', p);
+                // 必须返回响应数据对象，否则后续无法对响应数据进行处理
+                return p;
+            },
+
+            //请求失败后的回调函数
+            fail (p) {
+                console.log('request fail: ', p);
+                // 必须返回响应数据对象，否则后续无法对响应数据进行处理
+                return p;
+            },
+
+            // 请求完成时的回调函数(请求成功或失败都会被执行)
+            complete (p) {
+                console.log('request complete: ', p);
+            }
+        });
+    }
+}
+
+```
+
+*taro对request进行了二次封装,可以使用Taro.request(OBJECT)发起网络请求，支持 Promise 化使用。
+
+*mpvue没有对request做特殊优化,与原生相同,可以自己根据需要进行封装
 
 ## 腾讯云开发环境部署
 https://console.qcloud.com/lav2/dev
