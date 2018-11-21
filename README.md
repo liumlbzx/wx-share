@@ -184,3 +184,23 @@ https://console.qcloud.com/lav2/dev
 ![image](https://user-images.githubusercontent.com/19573429/48777312-3ab37f80-ed0d-11e8-93cd-97a6b4eaf7db.png)
 
 
+## 项目用到 koa2+mysql+mpvue
+
+### 配置server的config
+
+*npm install –g nodemon
+
+*node tools/initDb.js(sever下创建表，先新建cAuth库create database cAuth;)
+
+*启动服务(npm run dev)
+
+### 连接本地mysql
+
+*指南  https://cloud.tencent.com/document/product/619/12794
+
+*API秘钥管理链接  https://console.cloud.tencent.com/capi
+
+*appid链接  https://console.cloud.tencent.com/developer
+
+
+
